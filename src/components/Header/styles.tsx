@@ -10,6 +10,13 @@ export const NavBar = styled.div`
   display: flex;
   justify-content: space-between;
 
+  p {
+    font-weight: bold;
+    margin: 0 10px;
+    color: #151515;
+    font-size: 1.5rem;
+  }
+
   .logo {
     width: 80%;
     display: flex;

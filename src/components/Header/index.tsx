@@ -16,17 +16,18 @@ import {
 } from "@phosphor-icons/react";
 
 function Header() {
+  const logo = "Shopify".toUpperCase();
   return (
     <HeaderComponent>
-      <Box>
-        <Text align={"center"} p={1} fontSize={"sm"}>
+      <Box backgroundColor={"black"}>
+        <Text align={"center"} p={1} fontSize={"sm"} color={"#fff"}>
           20% Discount this week. Buy now!
         </Text>
       </Box>
       <Divider />
       <NavBar>
         <div className="logo">
-          Logo
+          <p>{logo}</p>
           <InputGroup width={"80%"}>
             <InputLeftElement pointerEvents="none">
               <MagnifyingGlass fontSize={25} color={"#c2c2c2"} />
