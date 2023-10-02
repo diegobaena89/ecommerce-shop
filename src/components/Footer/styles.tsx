@@ -23,13 +23,14 @@ export const FooterComponent = styled.footer`
   }
 
   .image {
-    background-image: url("https://www.thespruce.com/thmb/VTgMbNWv4tNDjGP8e1JRlZe0OHY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/storing-your-clothes-without-a-closet-2648456-001-cfe0a333273b4b66a56ce1e65e7a9643.jpg");
+    background-image: url("https://as1.ftcdn.net/v2/jpg/02/88/85/26/1000_F_288852636_AU4zdR1p8otvrj8Ic64IwLu6NGvqxoSx.jpg");
     height: 150px;
     background-size: cover;
     background-position: center;
     object-fit: contain;
     display: flex;
-    justify-content: center;
+    justify-content: end;
+    padding-right: 10%;
     align-items: center;
 
     .text {
