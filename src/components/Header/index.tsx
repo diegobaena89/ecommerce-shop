@@ -19,7 +19,7 @@ function Header() {
   const logo = "Shopify".toUpperCase();
   return (
     <HeaderComponent>
-      <Box backgroundColor={"black"}>
+      <Box backgroundColor={"#121213"}>
         <Text align={"center"} p={1} fontSize={"sm"} color={"#fff"}>
           20% Discount this week. Buy now!
         </Text>
@@ -43,30 +43,30 @@ function Header() {
         <div className="icons">
           <IconButton
             isRound={true}
-            variant="solid"
-            colorScheme="gray"
+            variant="outline"
+            color={"#c2c2c2"}
             aria-label="Done"
-            fontSize={25}
+            fontSize={22}
             marginRight={3}
             icon={<Star />}
           />
 
           <IconButton
             isRound={true}
-            variant="solid"
-            colorScheme="gray"
+            variant="outline"
+            color={"#c2c2c2"}
             aria-label="Done"
-            fontSize={25}
+            fontSize={22}
             marginRight={3}
             icon={<ShoppingCart />}
           />
 
           <IconButton
             isRound={true}
-            variant="solid"
-            colorScheme="gray"
+            variant="outline"
+            color={"#c2c2c2"}
             aria-label="Done"
-            fontSize={25}
+            fontSize={22}
             marginRight={3}
             icon={<User />}
           />
