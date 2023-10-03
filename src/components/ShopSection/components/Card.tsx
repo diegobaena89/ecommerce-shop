@@ -10,16 +10,24 @@ import {
 import { Heart, Star } from "@phosphor-icons/react";
 
 interface CardProps {
-  key: number;
+  id: number;
   product: string;
   rate: number;
   price: number;
+  image: string;
+  description: string;
 }
 
-function CardComponent({ key, product, rate, price }: CardProps): JSX.Element {
+function CardComponent({
+  id,
+  product,
+  rate,
+  price,
+  image,
+}: CardProps): React.JSX.Element {
   return (
     <Card
-      maxW="280px"
+      maxWidth="280px"
       borderRadius={12}
       boxShadow="5px 5px 5px rgba(0, 0, 0, 0.1)"
       marginBottom={10}
@@ -30,11 +38,23 @@ function CardComponent({ key, product, rate, price }: CardProps): JSX.Element {
       }}
     >
       <CardBody padding={0}>
-        <Image
-          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          alt="Green double couch with wooden legs"
-          borderRadius="md"
-        />
+        <Box
+          width={"100%"}
+          display={"flex"}
+          alignItems={"center"}
+          justifyContent={"center"}
+          minHeight={"55%"}
+        >
+          <Image
+            src={image}
+            alt={product}
+            borderRadius="md"
+            style={{
+              width: "50%",
+              height: "50%",
+            }}
+          />
+        </Box>
         <Stack mt="6" spacing="3">
           <Box padding="10px 15px 20px">
             <Heading fontWeight={"semibold"} fontSize={18} padding="0 0 10px">

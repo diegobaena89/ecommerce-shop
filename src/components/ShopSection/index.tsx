@@ -1,9 +1,19 @@
 import { Box, Text } from "@chakra-ui/react";
 import { Container } from "./styles";
 import CardComponent from "./components/Card";
+import { useEffect, useState } from "react";
 
 function ShopSection() {
-  const cardLength = 12;
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((json) => setProducts(json));
+  }, []);
+
+  console.log(products);
+
   return (
     <Container>
       <Box w="100%" paddingY={4}>
@@ -17,12 +27,15 @@ function ShopSection() {
         flexWrap={"wrap"}
         justifyContent={"space-around"}
       >
-        {Array.from(Array(cardLength).keys()).map((_, index) => (
+        {products.map((product: any) => (
           <CardComponent
-            key={index}
-            product="Green double couch with wooden legs"
-            rate={4.5}
-            price={150}
+            key={product.id}
+            id={product.id}
+            product={product.title}
+            rate={product.rating.rate}
+            price={product.price}
+            image={product.image}
+            description={product.description}
           />
         ))}
       </Box>
