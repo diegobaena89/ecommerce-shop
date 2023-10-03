@@ -5,9 +5,9 @@ export const IconCategoriesComponent = styled.div`
   height: 120px;
   background-color: #fff;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  padding: 80px 300px;
+  padding: 80px 250px;
 `;
 
 export const IconRounded = styled.div`
