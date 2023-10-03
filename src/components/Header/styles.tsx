@@ -12,9 +12,10 @@ export const NavBar = styled.div`
 
   p {
     font-weight: bold;
-    margin: 0 10px;
+    margin: 0 30px;
     color: #151515;
     font-size: 1.5rem;
+    padding: 0 15px;
   }
 
   .logo {

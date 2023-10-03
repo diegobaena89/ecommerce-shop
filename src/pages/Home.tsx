@@ -1,4 +1,5 @@
 import IconCategories from "../components/IconCategories";
+import ShopSection from "../components/ShopSection";
 import SwipeBanner from "../components/SwipeBanner";
 
 function Home() {
@@ -6,6 +7,7 @@ function Home() {
     <>
       <SwipeBanner />
       <IconCategories />
+      <ShopSection />
     </>
   );
 }

@@ -6,7 +6,7 @@ import {
   Watch,
   BaseballCap,
   Icon,
-  List,
+  TextColumns,
 } from "@phosphor-icons/react";
 import { IconCategoriesComponent, IconRounded } from "./styles";
 import React from "react";
@@ -20,7 +20,7 @@ function IconCategories() {
     Shoes: Sneaker,
     Watches: Watch,
     Cap: BaseballCap,
-    List: List,
+    All: TextColumns,
   };
 
   const iconSize = 24;

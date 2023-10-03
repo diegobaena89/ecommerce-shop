@@ -8,7 +8,7 @@ export const FooterComponent = styled.footer`
   .layer {
     position: relative;
     background-color: #121213;
-    height: 150px;
+    height: 200px;
 
     ::before {
       content: "";
@@ -24,7 +24,7 @@ export const FooterComponent = styled.footer`
 
   .image {
     background-image: url("https://as1.ftcdn.net/v2/jpg/02/88/85/26/1000_F_288852636_AU4zdR1p8otvrj8Ic64IwLu6NGvqxoSx.jpg");
-    height: 150px;
+    height: 200px;
     background-size: cover;
     background-position: center;
     object-fit: contain;
