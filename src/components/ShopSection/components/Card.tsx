@@ -12,7 +12,6 @@ import {
 } from "@chakra-ui/react";
 import { Star } from "@phosphor-icons/react";
 import { nameShortener } from "../../../utils/nameShortener";
-import { getProductId } from "../../../utils/getProductId";
 import { useContext, useState } from "react";
 import { ShopContext } from "../../../context/ShopContext";
 

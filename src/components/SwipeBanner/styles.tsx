@@ -18,7 +18,6 @@ export const BannerContainer = styled.div`
     font-size: 18px;
     background: #f9f9f9;
 
-    /* Center slide text vertically */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,6 +27,6 @@ export const BannerContainer = styled.div`
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: initial;
   }
 `;

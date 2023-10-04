@@ -14,12 +14,14 @@ import {
   Star,
   User,
 } from "@phosphor-icons/react";
-import { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ShopContext } from "../../context/ShopContext";
 
 function Header() {
   const logo = "Shopify".toUpperCase();
   const { listProducts } = useContext(ShopContext)!;
+  const { setCategory } = useContext(ShopContext)!;
+
   return (
     <HeaderComponent>
       <Box backgroundColor={"#121213"}>
@@ -39,7 +41,8 @@ function Header() {
               borderRadius={20}
               width={"90%"}
               type="tel"
-              placeholder="Search product or brand here"
+              placeholder="Search by category here"
+              onChange={(event) => setCategory(event.target.value)}
             />
           </InputGroup>
         </div>
