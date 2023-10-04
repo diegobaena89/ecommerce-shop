@@ -14,9 +14,12 @@ import {
   Star,
   User,
 } from "@phosphor-icons/react";
+import { useContext } from "react";
+import { ShopContext } from "../../context/ShopContext";
 
 function Header() {
   const logo = "Shopify".toUpperCase();
+  const { listProducts } = useContext(ShopContext)!;
   return (
     <HeaderComponent>
       <Box backgroundColor={"#121213"}>
@@ -44,22 +47,43 @@ function Header() {
           <IconButton
             isRound={true}
             variant="outline"
-            color={"#c2c2c2"}
+            color={"#b5b5b5"}
             aria-label="Done"
             fontSize={22}
             marginRight={3}
             icon={<Star />}
           />
 
-          <IconButton
-            isRound={true}
-            variant="outline"
-            color={"#c2c2c2"}
-            aria-label="Done"
-            fontSize={22}
-            marginRight={3}
-            icon={<ShoppingCart />}
-          />
+          <div style={{ position: "relative" }}>
+            <IconButton
+              isRound={true}
+              variant="outline"
+              color={"#c2c2c2"}
+              aria-label="Done"
+              fontSize={22}
+              marginRight={3}
+              icon={<ShoppingCart />}
+            />
+            {listProducts?.length > 0 && (
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "-2px",
+                  right: "6px",
+                  backgroundColor: "red",
+                  borderRadius: "50%",
+                  width: "18px",
+                  height: "18px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  color: "white",
+                }}
+              >
+                {listProducts?.length}
+              </div>
+            )}
+          </div>
 
           <IconButton
             isRound={true}

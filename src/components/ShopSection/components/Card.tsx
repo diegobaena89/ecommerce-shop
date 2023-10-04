@@ -13,7 +13,7 @@ import {
 import { Star } from "@phosphor-icons/react";
 import { nameShortener } from "../../../utils/nameShortener";
 import { getProductId } from "../../../utils/getProductId";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ShopContext } from "../../../context/ShopContext";
 
 interface CardProps {
@@ -59,15 +59,20 @@ function CardContent({
   const { setListProducts } = useContext(ShopContext)!;
   const toast = useToast();
 
+  const [lastAddedProduct, setLastAddedProduct] = useState<number>(0);
+
   function addProductToCart(id: number) {
     setListProducts((listProducts: any) => {
       if (Array.isArray(listProducts)) {
-        toast({
-          title: "Product added in cart.",
-          status: "success",
-          isClosable: true,
-          position: "top-right",
-        });
+        if (id !== lastAddedProduct) {
+          toast({
+            title: "Product added in cart.",
+            status: "success",
+            isClosable: true,
+            position: "top-right",
+          });
+          setLastAddedProduct(id);
+        }
         return [...listProducts, id];
       }
       return [id];
