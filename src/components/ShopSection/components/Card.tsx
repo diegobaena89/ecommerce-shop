@@ -8,6 +8,7 @@ import {
   Box,
   Divider,
   Button,
+  useToast,
 } from "@chakra-ui/react";
 import { Star } from "@phosphor-icons/react";
 import { nameShortener } from "../../../utils/nameShortener";
@@ -56,10 +57,17 @@ function CardContent({
   id: number;
 }) {
   const { setListProducts } = useContext(ShopContext)!;
+  const toast = useToast();
 
   function addProductToCart(id: number) {
     setListProducts((listProducts: any) => {
       if (Array.isArray(listProducts)) {
+        toast({
+          title: "Product added in cart.",
+          status: "success",
+          isClosable: true,
+          position: "top-right",
+        });
         return [...listProducts, id];
       }
       return [id];
