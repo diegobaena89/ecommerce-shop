@@ -31,7 +31,7 @@ function ShopSection({ products }: ShopSectionProps) {
         w="100%"
         display={"flex"}
         flexWrap={"wrap"}
-        justifyContent={"space-around"}
+        justifyContent={"flex-start"}
       >
         {products.map(({ id, title, rating, price, image, description }) => (
           <CardComponent

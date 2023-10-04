@@ -2,14 +2,17 @@ import { Container } from "./App.style";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./pages/Home";
+import { ShopProvider } from "./context/ShopContext";
 
 function App() {
   return (
-    <Container>
-      <Header />
-      <Home />
-      <Footer />
-    </Container>
+    <ShopProvider>
+      <Container>
+        <Header />
+        <Home />
+        <Footer />
+      </Container>
+    </ShopProvider>
   );
 }
 

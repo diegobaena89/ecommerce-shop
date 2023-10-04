@@ -5,7 +5,7 @@ export const IconCategoriesComponent = styled.div`
   height: 120px;
   background-color: #fff;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 80px 250px;
 `;

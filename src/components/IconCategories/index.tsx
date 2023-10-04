@@ -1,44 +1,39 @@
 import {
   TShirt,
-  Pants,
-  Bag,
-  Sneaker,
   Watch,
-  BaseballCap,
   Icon,
   TextColumns,
   Desktop,
-  Eyeglasses,
+  Dress,
 } from "@phosphor-icons/react";
 import { IconCategoriesComponent, IconRounded } from "./styles";
-import React from "react";
-import { Text } from "@chakra-ui/react";
+import React, { useContext } from "react";
+import { Box, Text } from "@chakra-ui/react";
+import { ShopContext } from "../../context/ShopContext";
 
 function IconCategories() {
   const iconsPhosphor: { [key: string]: Icon } = {
-    TShirt: TShirt,
-    Jeans: Pants,
-    Bag: Bag,
-    Shoes: Sneaker,
-    Watches: Watch,
-    Cap: BaseballCap,
-    Eletronics: Desktop,
-    Acessories: Eyeglasses,
+    "men's clothing": TShirt,
+    "women's clothing": Dress,
+    jewelery: Watch,
+    electronics: Desktop,
     All: TextColumns,
   };
 
   const iconSize = 24;
+  const { setCategory } = useContext(ShopContext)!;
 
   return (
     <IconCategoriesComponent>
       {Object.keys(iconsPhosphor).map((icon: string, index: number) => (
-        <div
+        <Box
           style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
           key={index}
+          onClick={() => (icon === "All" ? setCategory("") : setCategory(icon))}
         >
           <IconRounded key={index}>
             {React.createElement(iconsPhosphor[icon], {
@@ -48,7 +43,7 @@ function IconCategories() {
           <Text fontWeight={"semibold"} fontSize={"sm"}>
             {icon}
           </Text>
-        </div>
+        </Box>
       ))}
     </IconCategoriesComponent>
   );

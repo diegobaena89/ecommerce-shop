@@ -12,6 +12,8 @@ import {
 import { Star } from "@phosphor-icons/react";
 import { nameShortener } from "../../../utils/nameShortener";
 import { getProductId } from "../../../utils/getProductId";
+import { useContext } from "react";
+import { ShopContext } from "../../../context/ShopContext";
 
 interface CardProps {
   id: number;
@@ -53,6 +55,17 @@ function CardContent({
   price: number;
   id: number;
 }) {
+  const { setListProducts } = useContext(ShopContext)!;
+
+  function addProductToCart(id: number) {
+    setListProducts((listProducts: any) => {
+      if (Array.isArray(listProducts)) {
+        return [...listProducts, id];
+      }
+      return [id];
+    });
+  }
+
   return (
     <Box
       display="flex"
@@ -80,7 +93,11 @@ function CardContent({
         <Text marginTop={2} fontSize={20} fontWeight="medium">
           U$ {price}
         </Text>
-        <Button size={"sm"} colorScheme="red" onClick={() => getProductId(id)}>
+        <Button
+          size={"sm"}
+          colorScheme="red"
+          onClick={() => addProductToCart(id)}
+        >
           Add to cart
         </Button>
       </Box>
@@ -102,6 +119,7 @@ function CardComponent({
       borderRadius={12}
       boxShadow="5px 5px 5px rgba(0, 0, 0, 0.1)"
       marginBottom={10}
+      marginRight={12}
       cursor="pointer"
       _hover={{
         transform: "scale(1.02)",
