@@ -13,11 +13,14 @@ import {
   Image,
   Spinner,
   Divider,
+  IconButton,
+  Icon,
 } from "@chakra-ui/react";
 import { Product, ShopContext } from "../../context/ShopContext";
 import { fetchProductById } from "../../api/api";
 import { nameShortener } from "../../utils/nameShortener";
 import { calculateTotal } from "../../utils/calculateTotal";
+import { Trash } from "@phosphor-icons/react";
 
 function CartPage() {
   const { listProducts } = useContext(ShopContext)!;
@@ -43,6 +46,13 @@ function CartPage() {
       fetchCartProducts();
     }
   }, [listProducts]);
+
+  function setDeleteItem(id: number) {
+    console.log("deletou o item", id);
+    const newListProducts = listProducts.filter((item) => item !== id);
+    localStorage.setItem("shopping_cart", JSON.stringify(newListProducts));
+    window.location.reload();
+  }
 
   return (
     <CartContainer>
@@ -73,15 +83,23 @@ function CartPage() {
                           padding="20px"
                         />
 
-                        <Stack>
+                        <Stack
+                          display={"flex"}
+                          flexDirection={"row"}
+                          width={"100%"}
+                        >
                           <CardBody>
                             <Heading size="md">{item.title}</Heading>
+                            <Text fontSize={"smaller"}>{item.description}</Text>
                           </CardBody>
 
                           <CardFooter>
-                            <Button variant="solid" colorScheme="blue">
-                              Buy
-                            </Button>
+                            <Trash
+                              fontSize={20}
+                              color="red"
+                              cursor={"pointer"}
+                              onClick={() => setDeleteItem(item.id)}
+                            />
                           </CardFooter>
                         </Stack>
                       </Card>
