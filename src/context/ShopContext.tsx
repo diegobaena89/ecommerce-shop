@@ -1,4 +1,4 @@
-import React, { createContext, useMemo, useState } from "react";
+import React, { createContext, useEffect, useMemo, useState } from "react";
 
 export type Product = {
   id: number;
@@ -30,7 +30,14 @@ type ShopProviderProps = {
 
 export const ShopProvider: React.FC<ShopProviderProps> = ({ children }) => {
   const [category, setCategory] = useState("");
-  const [listProducts, setListProducts] = useState<any>();
+  const [listProducts, setListProducts] = useState<any>(() => {
+    const saveCart = localStorage.getItem("shopping_cart");
+    return saveCart ? JSON.parse(saveCart) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("shopping_cart", JSON.stringify(listProducts));
+  }, [listProducts]);
 
   const contextValue = useMemo(
     () => ({ category, setCategory, listProducts, setListProducts }),

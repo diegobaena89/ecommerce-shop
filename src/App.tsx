@@ -3,14 +3,21 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import { ShopProvider } from "./context/ShopContext";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import CartPage from "./pages/Cart/Cart";
 
 function App() {
   return (
     <ShopProvider>
       <Container>
-        <Header />
-        <Home />
-        <Footer />
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/" element={<Home />} />
+          </Routes>
+          <Footer />
+        </Router>
       </Container>
     </ShopProvider>
   );

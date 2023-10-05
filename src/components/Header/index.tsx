@@ -5,16 +5,18 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  Link,
   Text,
 } from "@chakra-ui/react";
 import { HeaderComponent, NavBar } from "./styles";
 import {
+  House,
   MagnifyingGlass,
   ShoppingCart,
   Star,
   User,
 } from "@phosphor-icons/react";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { ShopContext } from "../../context/ShopContext";
 
 function Header() {
@@ -46,47 +48,52 @@ function Header() {
             />
           </InputGroup>
         </div>
-        <div className="icons">
-          <IconButton
-            isRound={true}
-            variant="outline"
-            color={"#b5b5b5"}
-            aria-label="Done"
-            fontSize={22}
-            marginRight={3}
-            icon={<Star />}
-          />
 
-          <div style={{ position: "relative" }}>
+        <div className="icons">
+          <Link href="/">
             <IconButton
               isRound={true}
               variant="outline"
-              color={"#c2c2c2"}
+              color={"#b5b5b5"}
               aria-label="Done"
               fontSize={22}
               marginRight={3}
-              icon={<ShoppingCart />}
+              icon={<House />}
             />
-            {listProducts?.length > 0 && (
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "-2px",
-                  right: "6px",
-                  backgroundColor: "red",
-                  borderRadius: "50%",
-                  width: "18px",
-                  height: "18px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  color: "white",
-                }}
-              >
-                {listProducts?.length}
-              </div>
-            )}
-          </div>
+          </Link>
+
+          <Link href="/cart">
+            <div style={{ position: "relative" }}>
+              <IconButton
+                isRound={true}
+                variant="outline"
+                color={"#c2c2c2"}
+                aria-label="Done"
+                fontSize={22}
+                marginRight={3}
+                icon={<ShoppingCart />}
+              />
+              {listProducts?.length > 0 && (
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: "-2px",
+                    right: "6px",
+                    backgroundColor: "red",
+                    borderRadius: "50%",
+                    width: "18px",
+                    height: "18px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    color: "white",
+                  }}
+                >
+                  {listProducts?.length}
+                </div>
+              )}
+            </div>
+          </Link>
 
           <IconButton
             isRound={true}
