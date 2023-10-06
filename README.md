@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Chakra](https://img.shields.io/badge/chakra-%234ED1C5.svg?style=for-the-badge&logo=chakraui&logoColor=white)
 
-## Available Scripts
+[Project](#project) | [Features](#features) | [Layout](#layout) | [Launch](#launch)
 
-In the project directory, you can run:
+</div>
 
-### `npm start`
+📝 <a id="project"> **Project** </a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Welcome to the E-Commerce Shop project! This is a React TypeScript application built with Chakra UI, designed to provide a simple online shopping experience. We fetch product data from the FakeStore API to simulate a real e-commerce store.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+You can also see the deployed project [here](https://ecommerce-shop-red.vercel.app/ "here").
 
-### `npm test`
+Key Features:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Product Catalog: Browse through a wide range of products, each with detailed information including title, description, price, and image.
+- Product Details: Click on a product to view its detailed information, including product description and price.
+- Shopping Cart: Add products to your shopping cart and see a summary of your selected items.
+- Checkout: Review the items in your cart and proceed to the checkout process.
+- Responsive Design: Our user interface is responsive and adapts to different screen sizes for a seamless shopping experience.
+- TypeScript: We use TypeScript to ensure type safety and enhance the development process.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+🚀 <a id="features"> **Features** </a>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [x] Product Catalog
+- [x] Product Details
+- [x] Shopping Cart
+- [x] Checkout
+- [x] Responsive Design
+- [x] TypeScript Integration
+- [x] Data fetched from FakeStore API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+<a id="layout"> **Layout** </a>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<div display="flex">
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Layout](https://github.com/diegobaena89/ecommerce-shop/blob/main/src/assets/initial.png?raw=true "Initial")
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Layout](https://github.com/diegobaena89/ecommerce-shop/blob/main/src/assets/cart.png?raw=true "Cart")
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+</div>
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+📂 <a id="launch"> **How to start this project** </a>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+       # Clone this repo
+    ❯ gh repo clone diegobaena89/ecommerce-shop
+
+    # Enter on its directory
+    ❯ cd ecommerce-shop
+
+    # Launch the Application
+    ❯ yarn start
