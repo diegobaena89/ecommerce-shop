@@ -18,6 +18,8 @@ type ShopContextType = {
   setCategory: (category: string) => void;
   listProducts: [];
   setListProducts: (listProducts: any) => void;
+  itemQuantity: number;
+  setItemQuantity: (id: number) => void;
 };
 
 export const ShopContext = createContext<ShopContextType | undefined>(
@@ -30,6 +32,7 @@ type ShopProviderProps = {
 
 export const ShopProvider: React.FC<ShopProviderProps> = ({ children }) => {
   const [category, setCategory] = useState("");
+  const [itemQuantity, setItemQuantity] = useState<number>(0);
   const [listProducts, setListProducts] = useState<any>(() => {
     const saveCart = localStorage.getItem("shopping_cart");
     return saveCart ? JSON.parse(saveCart) : [];
@@ -40,8 +43,22 @@ export const ShopProvider: React.FC<ShopProviderProps> = ({ children }) => {
   }, [listProducts]);
 
   const contextValue = useMemo(
-    () => ({ category, setCategory, listProducts, setListProducts }),
-    [category, setCategory, listProducts, setListProducts]
+    () => ({
+      category,
+      setCategory,
+      listProducts,
+      setListProducts,
+      itemQuantity,
+      setItemQuantity,
+    }),
+    [
+      category,
+      setCategory,
+      listProducts,
+      setListProducts,
+      itemQuantity,
+      setItemQuantity,
+    ]
   );
 
   return (

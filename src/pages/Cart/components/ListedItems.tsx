@@ -18,15 +18,25 @@ function ListedItem({
   listProducts: [];
   cartProducts: Product[];
 }) {
+  const uniqueCartProducts = Array.from(
+    new Map(cartProducts.map((item) => [item.id, item])).values()
+  );
+
+  const productQuantity = (id: number) => {
+    const quantity = cartProducts.filter((item) => item.id === id);
+    return quantity.length;
+  };
+
   return (
     <CardBody flex="0 0 50%">
       <Stack spacing="4">
-        {cartProducts.map((item: Product) => (
+        {uniqueCartProducts.map((item: Product) => (
           <Card
             key={item.id}
             direction={{ base: "column", sm: "row" }}
             overflow="hidden"
             variant="outline"
+            cursor={"pointer"}
           >
             <Image
               objectFit="contain"
@@ -43,13 +53,18 @@ function ListedItem({
                 <Text fontSize={"smaller"}>{item.description}</Text>
               </CardBody>
 
-              <CardFooter>
+              <CardFooter
+                flexDirection={"column"}
+                justifyContent={"space-between"}
+                alignItems={"flex-end"}
+              >
                 <Trash
                   fontSize={20}
                   color="red"
                   cursor={"pointer"}
                   onClick={() => setDeleteItem(item.id, listProducts)}
                 />
+                <Text>U$ {item.price}</Text>
               </CardFooter>
             </Stack>
           </Card>
