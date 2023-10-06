@@ -1,5 +1,7 @@
 import {
   Box,
+  Breadcrumb,
+  BreadcrumbItem,
   Divider,
   IconButton,
   Input,
@@ -7,17 +9,19 @@ import {
   InputLeftElement,
   Link,
   Text,
+  BreadcrumbLink,
 } from "@chakra-ui/react";
 import { HeaderComponent, NavBar } from "./styles";
 import {
   House,
   MagnifyingGlass,
   ShoppingCart,
-  Star,
   User,
 } from "@phosphor-icons/react";
 import React, { useContext } from "react";
 import { ShopContext } from "../../context/ShopContext";
+import { ChevronRightIcon } from "@chakra-ui/icons";
+import BreadcrumbComponent from "../Breadcrumb/Breadcrumb";
 
 function Header() {
   const logo = "Shopify".toUpperCase();
@@ -106,6 +110,8 @@ function Header() {
           />
         </div>
       </NavBar>
+
+      <BreadcrumbComponent />
     </HeaderComponent>
   );
 }
