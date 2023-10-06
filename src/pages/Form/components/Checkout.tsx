@@ -7,10 +7,23 @@ import {
   Divider,
   Text,
 } from "@chakra-ui/react";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { ShopContext } from "../../../context/ShopContext";
 
 function Checkout() {
   const finalValue = localStorage.getItem("final_value");
   const finalValueNumber = Number(finalValue).toFixed(2);
+  const navigate = useNavigate();
+  const { setListProducts } = useContext(ShopContext)!;
+
+  function handleCloseCart() {
+    localStorage.clear();
+    setListProducts([]);
+
+    navigate("/final");
+  }
+
   return (
     <Card width={"35%"} height={"160px"}>
       <CardBody>
@@ -28,7 +41,7 @@ function Checkout() {
           marginTop={3}
           colorScheme="telegram"
           size={"md"}
-          onClick={() => console.log("finish")}
+          onClick={() => handleCloseCart()}
         >
           Finish
         </Button>

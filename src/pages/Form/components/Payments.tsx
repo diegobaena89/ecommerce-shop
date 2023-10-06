@@ -17,6 +17,12 @@ function PaymentCard({ paymentMethod, icon }: PaymentCardProps) {
       justifyContent={"center"}
       alignItems={"center"}
       padding={2}
+      _hover={{
+        color: "#858585",
+        borderColor: "#858585",
+        backgroundColor: "#f8f8f8",
+        transition: "ease-in 0.3s",
+      }}
     >
       {paymentMethod}
     </Card>
