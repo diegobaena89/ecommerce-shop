@@ -20,6 +20,8 @@ type ShopContextType = {
   setListProducts: (listProducts: any) => void;
   itemQuantity: number;
   setItemQuantity: (id: number) => void;
+  cartProducts: Product[];
+  setCartProducts: (cartProducts: Product[]) => void;
 };
 
 export const ShopContext = createContext<ShopContextType | undefined>(
@@ -33,6 +35,7 @@ type ShopProviderProps = {
 export const ShopProvider: React.FC<ShopProviderProps> = ({ children }) => {
   const [category, setCategory] = useState("");
   const [itemQuantity, setItemQuantity] = useState<number>(0);
+  const [cartProducts, setCartProducts] = useState<Product[]>([]);
   const [listProducts, setListProducts] = useState<any>(() => {
     const saveCart = localStorage.getItem("shopping_cart");
     return saveCart ? JSON.parse(saveCart) : [];
@@ -50,6 +53,8 @@ export const ShopProvider: React.FC<ShopProviderProps> = ({ children }) => {
       setListProducts,
       itemQuantity,
       setItemQuantity,
+      cartProducts,
+      setCartProducts,
     }),
     [
       category,
@@ -58,6 +63,8 @@ export const ShopProvider: React.FC<ShopProviderProps> = ({ children }) => {
       setListProducts,
       itemQuantity,
       setItemQuantity,
+      cartProducts,
+      setCartProducts,
     ]
   );
 

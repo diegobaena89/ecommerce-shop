@@ -3,27 +3,33 @@ import {
   Card,
   Heading,
   Box,
-  Stack,
   Text,
   Button,
   Divider,
 } from "@chakra-ui/react";
 import { nameShortener } from "../../../utils/nameShortener";
 import { calculateTotal } from "../../../utils/calculateTotal";
-import { Product } from "../../../context/ShopContext";
+import { Product, ShopContext } from "../../../context/ShopContext";
 import { productQuantity } from "../../../utils/manageItems";
+import { filterRepeatedProducts } from "../../../utils/filterRepeatedProducts";
+import { useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
 
 function ValueContainer({ cartProducts }: { cartProducts: Product[] }) {
-  console.log("cartProducts", cartProducts);
+  const navigate = useNavigate();
+  const { setCartProducts } = useContext(ShopContext)!;
 
-  function filterRepeatedProducts(cartProducts: Product[]) {
-    const filteredProducts = cartProducts.filter((product, index, array) => {
-      return array.findIndex((item) => item.id === product.id) === index;
-    });
-    return filteredProducts;
+  function handleNavigate() {
+    navigate("/form");
   }
 
-  console.log(filterRepeatedProducts(cartProducts));
+  useEffect(() => {
+    setCartProducts(cartProducts);
+    window.localStorage.setItem(
+      "final_value",
+      JSON.stringify(calculateTotal(cartProducts))
+    );
+  }, [cartProducts, setCartProducts]);
 
   return (
     <CardBody>
@@ -48,7 +54,12 @@ function ValueContainer({ cartProducts }: { cartProducts: Product[] }) {
         <Text align={"end"} padding="10px 0" fontWeight={"bold"}>
           Total: {calculateTotal(cartProducts).toFixed(2)}
         </Text>
-        <Button marginTop={3} colorScheme="green" size={"md"}>
+        <Button
+          marginTop={3}
+          colorScheme="telegram"
+          size={"md"}
+          onClick={() => handleNavigate()}
+        >
           Finish
         </Button>
       </Card>

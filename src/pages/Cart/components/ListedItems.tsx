@@ -22,11 +22,6 @@ function ListedItem({
     new Map(cartProducts.map((item) => [item.id, item])).values()
   );
 
-  const productQuantity = (id: number) => {
-    const quantity = cartProducts.filter((item) => item.id === id);
-    return quantity.length;
-  };
-
   return (
     <CardBody flex="0 0 50%">
       <Stack spacing="4">
