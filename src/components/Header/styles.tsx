@@ -25,11 +25,4 @@ export const NavBar = styled.div`
     justify-content: space-between;
     padding: 15px 0;
   }
-
-  .icons {
-    width: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-  }
 `;

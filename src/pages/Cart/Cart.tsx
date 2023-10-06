@@ -1,15 +1,17 @@
 import { useContext, useEffect, useState } from "react";
-import { CartContainer } from "./styles";
-import { Box, Card, CardHeader, Heading, Spinner } from "@chakra-ui/react";
+import { CartContainer, EmptyCart } from "./styles";
+import { Box, Button, Card, CardHeader, Heading, Text } from "@chakra-ui/react";
 import { Product, ShopContext } from "../../context/ShopContext";
 import { fetchProductById } from "../../api/api";
 import ListedItem from "./components/ListedItems";
 import ValueContainer from "./components/Valuecontainer";
+import { useNavigate } from "react-router-dom";
 
 function CartPage() {
   const { listProducts } = useContext(ShopContext)!;
   const [cartProducts, setCartProducts] = useState<Product[]>([]);
-
+  const emptyText = "You didn't shop anything yet! :)";
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchCartProducts = async () => {
       try {
@@ -22,7 +24,7 @@ function CartPage() {
 
         setCartProducts(cartProductDetails);
       } catch (error) {
-        console.error("Erro ao buscar detalhes dos produtos:", error);
+        console.error("Error:", error);
       }
     };
 
@@ -33,7 +35,7 @@ function CartPage() {
 
   return (
     <CartContainer>
-      {cartProducts ? (
+      {cartProducts.length !== 0 ? (
         <Box>
           <Box>
             <Card>
@@ -52,7 +54,18 @@ function CartPage() {
           </Box>
         </Box>
       ) : (
-        <Spinner size={"xl"} />
+        <EmptyCart>
+          <Heading paddingBottom={2}>{emptyText}</Heading>
+          <Text>Go back to home page and choose your product!</Text>
+          <Button
+            marginTop={4}
+            colorScheme="blue"
+            size="sm"
+            onClick={() => navigate("/")}
+          >
+            Go to Home Page
+          </Button>
+        </EmptyCart>
       )}
     </CartContainer>
   );

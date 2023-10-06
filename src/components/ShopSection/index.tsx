@@ -20,6 +20,33 @@ interface ShopSectionProps {
 }
 
 function ShopSection({ products }: ShopSectionProps) {
+  const renderCards = (
+    <Box
+      w="100%"
+      display={"flex"}
+      flexWrap={"wrap"}
+      justifyContent={"flex-start"}
+    >
+      {products.map(({ id, title, rating, price, image, description }) => (
+        <CardComponent
+          key={id}
+          id={id}
+          product={title}
+          rate={rating.rate}
+          price={price}
+          image={image}
+          description={description}
+        />
+      ))}
+    </Box>
+  );
+
+  const renderSpinner = (
+    <Box w="100%" display={"flex"} flexWrap={"wrap"} justifyContent={"center"}>
+      <Spinner size={"xl"} />
+    </Box>
+  );
+
   return (
     <Container>
       <Box w="100%" paddingY={4}>
@@ -27,35 +54,7 @@ function ShopSection({ products }: ShopSectionProps) {
           Todays for you!
         </Text>
       </Box>
-      {products.length > 0 ? (
-        <Box
-          w="100%"
-          display={"flex"}
-          flexWrap={"wrap"}
-          justifyContent={"flex-start"}
-        >
-          {products.map(({ id, title, rating, price, image, description }) => (
-            <CardComponent
-              key={id}
-              id={id}
-              product={title}
-              rate={rating.rate}
-              price={price}
-              image={image}
-              description={description}
-            />
-          ))}
-        </Box>
-      ) : (
-        <Box
-          w="100%"
-          display={"flex"}
-          flexWrap={"wrap"}
-          justifyContent={"center"}
-        >
-          <Spinner size={"xl"} />
-        </Box>
-      )}
+      {products.length > 0 ? renderCards : renderSpinner}
     </Container>
   );
 }
